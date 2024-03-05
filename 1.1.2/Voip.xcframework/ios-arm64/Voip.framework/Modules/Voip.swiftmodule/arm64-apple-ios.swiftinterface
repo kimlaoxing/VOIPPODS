@@ -1,0 +1,104 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Voip
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import ActivityIndicatorView
+import Alamofire
+import CallKit
+import Combine
+import DeveloperToolsSupport
+import FloatingLabelTextFieldSwiftUI
+import Foundation
+import Security
+import Swift
+import SwiftUI
+import SwiftUI_SimpleToast
+import UIKit
+@_exported import Voip
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import linphonesw
+public class APIDataTransferDI {
+  public init(keyChain: any Voip.LoginLocalDataProtocol)
+  @objc deinit
+}
+public struct UIKitColor {
+  public static let yellowColor: UIKit.UIColor
+  public static let blackColor: UIKit.UIColor
+  public static let whiteColor: UIKit.UIColor
+  public static let greenColor: UIKit.UIColor
+  public static let redColor: UIKit.UIColor
+  public static let blueColor: UIKit.UIColor
+  public static let clearColor: UIKit.UIColor
+  public static let grayColor: UIKit.UIColor
+  public static let pinkColor: UIKit.UIColor
+  public static let orangeColor: UIKit.UIColor
+  public static let systemGray: UIKit.UIColor
+}
+public class ContactListViewModel : Foundation.ObservableObject {
+  public init(injection: Voip.APIDataTransferDI)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+public protocol LoginLocalDataProtocol {
+  func saveObject(with object: [Swift.String : Any])
+  func retrieveObject() -> [Swift.String : Any]?
+  func deleteObject()
+  func retrieveKeychainObject() -> Voip.KeychainObject?
+}
+public class LoginLocalData {
+  public init()
+  @objc deinit
+}
+extension Voip.LoginLocalData : Voip.LoginLocalDataProtocol {
+  public func deleteObject()
+  public func retrieveObject() -> [Swift.String : Any]?
+  public func retrieveKeychainObject() -> Voip.KeychainObject?
+  public func saveObject(with object: [Swift.String : Any])
+}
+@_hasMissingDesignatedInitializers public class AppRouter : Foundation.ObservableObject {
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+public class DefaultLoginViewModel : Foundation.ObservableObject {
+  public init(injection: Voip.APIDataTransferDI, keyChain: any Voip.LoginLocalDataProtocol)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@_Concurrency.MainActor(unsafe) public struct ContentView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(viewModel: Voip.CallKitContext, keyChain: any Voip.LoginLocalDataProtocol, loginViewModel: Voip.DefaultLoginViewModel, contacListViewModel: Voip.ContactListViewModel)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s4Voip11ContentViewV4bodyQrvp", 0) __
+}
+@_Concurrency.MainActor(unsafe) public struct TabBarContentView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(router: Voip.AppRouter, viewModel: Voip.CallKitContext, keyChain: any Voip.LoginLocalDataProtocol, contactListViewModel: Voip.ContactListViewModel)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s4Voip17TabBarContentViewV4bodyQrvp", 0) __
+}
+public struct KeychainObject {
+  public let accessToken: Swift.String
+  public let expiresIn: Swift.Int
+  public let refreshToken: Swift.String
+  public let refreshExpiresIn: Swift.Int
+  public let urlFreePBX: Swift.String
+  public let username: Swift.String
+  public let password: Swift.String
+  public let timeWhenObjectIsSaved: Swift.Int
+}
+public class CallKitContext : Foundation.ObservableObject {
+  public var mCore: linphonesw.Core!
+  public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+extension Voip.CallKitContext {
+  public func logout()
+  public func unregister()
+  public func delete()
+}
